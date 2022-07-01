@@ -4,11 +4,9 @@ fetch("http://localhost:3000/api/products")
 .then(function(res){
 return res.json()
 })
-.then(function(res){
-    console.log(res) ; console.log(res[0]) ; data=res
-        })
+.then(function(res){ data=res})
         .then ( function(){ let  parent = document.getElementById("items");   for (let i=0; i<data.length; i++) 
-        { let  clone = parent.lastElementChild.cloneNode(true); 
+        { let  clone = parent.lastElementChild.cloneNode(true);  //on clone les elements jusqu'à arriver au nombre d'elements presents dans res
             if(i<data.length-1) {parent.appendChild(clone);}; //-1 parce que 1 art déjà présent
             document.getElementsByClassName("productName")[i].innerHTML=data[i].name;
             document.getElementsByClassName("productDescription")[i].innerHTML=data[i].description; 
@@ -28,9 +26,6 @@ items.addEventListener("click", (e)=>{if(e.path[0].id=="items")
 {articleId=""}else{e.path[0].id? articleId=(e.path[0].id):articleId=(e.path[1].id)}})
 
 
-document.addEventListener("click", pageControle)
-var linkActuel=window.location.href
 
-function pageControle(){
-    for (let a=0; a<data.length; i++) 
-        { window.location.href.includes(data[a]._id)? console.log("trovato"+ a ) : console.log("non trovato");}}
+
+
