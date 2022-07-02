@@ -6,7 +6,7 @@ return res.json()
 })
 .then(function(res){ data=res })
         .then (
-        function pageControle(){
+        function pageControle(){ //controle l'id et affiche les détails
             for (let i=0; i<data.length; i++) 
                 { if(window.location.href.includes(data[i]._id)) {
                     document.querySelector(".item img").src=data[i].imageUrl
@@ -35,7 +35,7 @@ let quantityCanape=document.getElementById("quantity").value
         {window.localStorage.setItem(idCanape+colorCanape,colorCanape+","+quantityCanape )}            
     else if(window.localStorage.getItem(idCanape+colorCanape).split(",")[0]==colorCanape)  //si le produit existe déjà et la couleur est la pareille, il faut convertir la quantité presente et la quantité à ajouter en number, faire l'addition et mettre à jour
         {quantityCanape=parseInt(quantityCanape)+parseInt(window.localStorage.getItem(idCanape+colorCanape).split(",")[1]); window.localStorage.setItem(idCanape+colorCanape,colorCanape+","+quantityCanape )}
-    else{console.log("Erreur ligne 38")}
+    else{console.log("Erreur ligne 38; rien se passe")}
 
 
 }
