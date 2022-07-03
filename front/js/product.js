@@ -9,6 +9,7 @@ return res.json()
         function pageControle(){ //controle l'id et affiche les détails
             for (let i=0; i<data.length; i++) 
                 { if(window.location.href.includes(data[i]._id)) {
+                    document.getElementById("title").textContent=data[i].name;
                     document.querySelector(".item img").src=data[i].imageUrl
                     document.querySelector(".item__content__titlePrice p").textContent+=" "+data[i].price
                     document.querySelector(".item__content__description p").textContent+=" "+data[i].description

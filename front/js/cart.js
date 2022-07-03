@@ -59,6 +59,16 @@ function detailsPanier () {let a=0; let total=0;
 
 
 //formulaire
+document.getElementById("order").addEventListener("click", goToConfirmation)
+
+function goToConfirmation(event) //!!!!!!!!!!!!!
+{event.preventDefault(); if(document.getElementById("cityErrorMsg").textContent==""&&document.getElementById("city").value!=""&&
+document.getElementById("firstNameErrorMsg").textContent==""&&document.getElementById("firstName").value!=""&&
+document.getElementById("lastNameErrorMsg").textContent==""&&document.getElementById("lastName").value!=""&&
+document.getElementById("addressErrorMsg").textContent==""&&document.getElementById("address").value!=""&&
+document.getElementById("emailErrorMsg").textContent==""&&document.getElementById("email").value!="")
+  {console.log("giusto"); window.location.href="http://127.0.0.1:5500/front/html/confirmation.html"} else 
+  {alert("Pour valider est necessaire completer le formulaire")}}
 
 const formulaireElements = document.querySelectorAll(".cart__order__form__question input");
 formulaireElements.forEach((formulaireElement)=>{
