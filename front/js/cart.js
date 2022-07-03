@@ -34,7 +34,7 @@ function idPositionf(){
         for(let i=0; i<idArray.length; i++) {if(value==idArray[i]) idPosition.push(i)}
 }}
 
-function detailsPanier () {let a=0
+function detailsPanier () {let a=0; let total=0;
 
     for(let i=0; i<panierIdArray.length; i++) {
             document.querySelectorAll(".cart__item__content__description h2")[i].innerHTML=data[idPosition[i]].name;//vise le seul h2 de [i] (le nom du produit) et le met à jour
@@ -43,17 +43,13 @@ function detailsPanier () {let a=0
             document.querySelectorAll(".deleteItem")[i].addEventListener("click", function() {document.querySelectorAll("article.cart__item ")[i].remove()}) //button supprimer
             if(i==0) { //si [i] est 0 on vise les deux <p> presents dans l'article (couleur et prix). Dans ce cas, <p>[0] et <p>[1]
             document.querySelectorAll(".cart__item__content__description p")[i].innerHTML=Object.keys(localStorage)[i].split(",")[1];
-            document.querySelectorAll(".cart__item__content__description p")[i+1].innerHTML=data[idPosition[i]].price;}
-            else if(i>0 && i%2==1){ //si [i] est impair on vise les deux <p> de l'article en pos  impair. Pour i=1, on vise <p>[2]et <p>[3], pour i=3, <p>[6]et[7] etc
+            document.querySelectorAll(".cart__item__content__description p")[i+1].innerHTML=data[idPosition[i]].price;
+            total=total+data[idPosition[i]].price;document.getElementById("totalPrice").textContent=total;}
+            else { // on vise les deux <p> de l'article [i]. Le pair est la couleur, l'impair est le prix
             document.querySelectorAll(".cart__item__content__description p")[i+1+a].innerHTML=Object.keys(localStorage)[i].split(",")[1];//135
             document.querySelectorAll(".cart__item__content__description p")[i+2+a].innerHTML=data[idPosition[i]].price;
-            a=a+1;} //à chaque boucle à partir de i>0, a augmente pour viser les <p> correctement
-
-            else if(i>0 && i%2==0){ //si i est pair [0] et>0 on vise les deux <p> de l'article en pos pair. Pour i=2, on vise <p>[4]et <p>[5], pour i=4, <p>[8]et[9] etc
-            document.querySelectorAll(".cart__item__content__description p")[i+1+a].innerHTML=Object.keys(localStorage)[i].split(",")[1];
-            document.querySelectorAll(".cart__item__content__description p")[i+2+a].innerHTML=data[idPosition[i]].price;
-            a=a+1}
-            else {console.log("entrato nell'else")}
+            total=total+data[idPosition[i]].price; document.getElementById("totalPrice").textContent=total;
+            a=a+1;} 
             }}
 
 //total=total+parseInt(document.querySelectorAll(".cart__item__content__description p")[i+2+a].textContent); console.log(total)
